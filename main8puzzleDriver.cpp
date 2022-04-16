@@ -69,8 +69,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    // cin >> s;
-                    // initialSSixT[i][j] = s;
+                    cin >> initialSEight[i][j];
                     s = initialSEight[i][j];
                     if (s == "A")
                         val = 10;
@@ -100,7 +99,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    //cin >> goalSSixT[i][j];
+                    cin >> goalSEight[i][j];
                     s = goalSEight[i][j];
 
                     if (s == "A")
@@ -133,8 +132,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    // cin >> s;
-                    // initialSSixT[i][j] = s;
+                    cin >> initialSEight[i][j];
                     s = initialSEight[i][j];
                     if (s == "A")
                         val = 10;
@@ -164,7 +162,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    //cin >> goalSSixT[i][j];
+                    cin >> goalSEight[i][j];
                     s = goalSEight[i][j];
 
                     if (s == "A")
@@ -290,7 +288,7 @@ int main()
             BFS(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
             cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -306,7 +304,7 @@ int main()
             DFS(initialEight, x, y, 0, NULL, goalEight, 40);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
             cout << "\nTotal Nodes-->" << searchNodes[choice+1] << endl << "Solution Nodes-->" << solutionNodes[choice+1] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -322,7 +320,7 @@ int main()
             IDS(initialEight, x, y, 0, NULL, goalEight, 40);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
             cout << "\nTotal Nodes-->" << searchNodes[choice+1] << endl << "Solution Nodes-->" << solutionNodes[choice+1] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -336,7 +334,7 @@ int main()
             AstarSearch(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
             cout << "\nTotal Nodes-->" << searchNodes[choice+2] << endl << "Solution Nodes-->" << solutionNodes[choice+2] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -348,8 +346,8 @@ int main()
             clock_t start = clock();
             IDAStar(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "Total Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice+1] << endl << "Solution Nodes-->" << solutionNodes[choice+1] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
         }
         else if (choice == 6)
         {
@@ -362,27 +360,39 @@ int main()
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
 
             cout << "Running DFS" << endl << endl;
             mp.clear();
             dfs_sltn = false;
-            DFS(initialEight, x, y, 0, NULL, goalEight, 9);
+            DFS(initialEight, x, y, 0, NULL, goalEight, 40);
             cout << "\nTotal Nodes-->" << searchNodes[3] << endl << "Solution Nodes-->" << solutionNodes[3] << endl << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
 
             cout << "Running IDS" << endl << endl;
             mp.clear();
             dfs_sltn = false;
-            IDS(initialEight, x, y, 0, NULL, goalEight, 9);
+            IDS(initialEight, x, y, 0, NULL, goalEight, 40);
             cout << "\nTotal Nodes-->" << searchNodes[4] << endl << "Solution Nodes-->" << solutionNodes[4] << endl << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
+            }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
             }
 
 
@@ -395,18 +405,26 @@ int main()
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
 
             cout << "Running IDA*" << endl << endl;
             mp.clear();
             clock_t start = clock();
             IDAStar(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "Total Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
+            }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
             }
 
 
