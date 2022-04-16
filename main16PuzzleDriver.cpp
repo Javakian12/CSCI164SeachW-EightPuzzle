@@ -68,8 +68,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    // cin >> s;
-                    // initialSSixT[i][j] = s;
+                    cin >> initialSEight[i][j];
                     s = initialSEight[i][j];
                     if (s == "A")
                         val = 10;
@@ -99,7 +98,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    //cin >> goalSSixT[i][j];
+                    cin >> goalSEight[i][j];
                     s = goalSEight[i][j];
 
                     if (s == "A")
@@ -132,8 +131,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    // cin >> s;
-                    // initialSSixT[i][j] = s;
+                    cin >> initialSEight[i][j];
                     s = initialSEight[i][j];
                     if (s == "A")
                         val = 10;
@@ -163,7 +161,7 @@ int main()
             {
                 for (int j = 0; j < N; j++)
                 {
-                    //cin >> goalSSixT[i][j];
+                    cin >> goalSEight[i][j];
                     s = goalSEight[i][j];
 
                     if (s == "A")
