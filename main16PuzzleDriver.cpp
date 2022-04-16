@@ -22,14 +22,7 @@ int iterate = 0;
 
 int main()
 {
-    string initialSSixT[N][N] =
-    {
-        {"1", "6", "2", "3"},
-        {"5", "A", "7", "4"},
-        {"9", "C", "0", "8"},
-        {"D", "E", "B", "F"}
-    };
-    string intitialSEight[3][3]{
+    string initialSEight[3][3]{
         {"1", "6", "0"},
         {"2", "7", "3"},
         {"4", "8", "5"}
@@ -40,31 +33,11 @@ int main()
         {0,0,0},
         {0,0,0}
     };
-    int initialSixT[N][N] =
-    {
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0}
-    };
-    int goalSixT[N][N]{
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0}
-    };
 
     int goalEight[3][3]{
         {1,2,3},
         {4,5,6},
         {7,8,0}
-    };
-    string goalSSixT[N][N] =
-    {
-        {"0", "1", "2", "3"},
-        {"4", "5", "6", "7"},
-        {"8", "9", "A", "B"},
-        {"C", "D", "E", "F"}
     };
     string goalSEight[3][3] =
     {
@@ -77,15 +50,13 @@ int main()
     int n;
     while (1)
     {
+        cout << "This is the 3 tile driver. Pick a mode:" << endl;
         cout << "Choose Mode:" << endl << "1.Traverse Mode (No move sequence Input)" << endl << "2.Traverse Mode (Move Sequence Input)" << "\n3.Exit" << endl;
         cin >> mode;
         if (mode == 1)
         {
-            cout << "Enter Board Size: (3 for 8 puzzle or 4 for 15 puzzle)" << endl;
-            cin >> n;
-            choiceOf = n;
 #undef N
-#define N n
+#define N 3
 
 
 
@@ -99,7 +70,7 @@ int main()
                 {
                     // cin >> s;
                     // initialSSixT[i][j] = s;
-                    s = initialSSixT[i][j];
+                    s = initialSEight[i][j];
                     if (s == "A")
                         val = 10;
                     else if (s == "B")
@@ -115,9 +86,9 @@ int main()
                     else
                         val = stoi(s);
 
-                    initialSixT[i][j] = val;
+                    initialEight[i][j] = val;
 
-                    if (initialSixT[i][j] == 0)
+                    if (initialEight[i][j] == 0)
                     {
                         x = i, y = j;
                     }
@@ -129,7 +100,7 @@ int main()
                 for (int j = 0; j < N; j++)
                 {
                     //cin >> goalSSixT[i][j];
-                    s = goalSSixT[i][j];
+                    s = goalSEight[i][j];
 
                     if (s == "A")
                         val = 10;
@@ -146,14 +117,14 @@ int main()
                     else
                         val = stoi(s);
 
-                    goalSixT[i][j] = val;
+                    goalEight[i][j] = val;
 
                 }
             }
         }
         else if (mode == 2) {
 #undef N
-#define N 4
+#define N 3
             int val;
             string s;
             cout << "Enter Initial State:" << endl;
@@ -163,7 +134,7 @@ int main()
                 {
                     // cin >> s;
                     // initialSSixT[i][j] = s;
-                    s = initialSSixT[i][j];
+                    s = initialSEight[i][j];
                     if (s == "A")
                         val = 10;
                     else if (s == "B")
@@ -179,9 +150,9 @@ int main()
                     else
                         val = stoi(s);
 
-                    initialSixT[i][j] = val;
+                    initialEight[i][j] = val;
 
-                    if (initialSixT[i][j] == 0)
+                    if (initialEight[i][j] == 0)
                     {
                         x = i, y = j;
                     }
@@ -193,7 +164,7 @@ int main()
                 for (int j = 0; j < N; j++)
                 {
                     //cin >> goalSSixT[i][j];
-                    s = goalSSixT[i][j];
+                    s = goalSEight[i][j];
 
                     if (s == "A")
                         val = 10;
@@ -210,7 +181,7 @@ int main()
                     else
                         val = stoi(s);
 
-                    goalSixT[i][j] = val;
+                    goalEight[i][j] = val;
 
                 }
             }
@@ -225,64 +196,64 @@ int main()
             }
             for (int v = 0; v < t.size(); v++) {
                 if (moves[v] == 'l') {
-                    for (int o = 0; o < 4; o++) {
-                        for (int q = 0; q < 4; q++) {
-                            if (initialSixT[o][q] == 0) {
+                    for (int o = 0; o < 3; o++) {
+                        for (int q = 0; q < 3; q++) {
+                            if (initialEight[o][q] == 0) {
                                 if (q == 0) {
                                     cout << "Cant move left, empty tile is leftmost" << endl;
                                 }
                                 else {
-                                    temp = initialSixT[o][q];
-                                    initialSixT[o][q] = initialSixT[o][q - 1];
-                                    initialSixT[o][q - 1] = temp;
+                                    temp = initialEight[o][q];
+                                    initialEight[o][q] = initialEight[o][q - 1];
+                                    initialEight[o][q - 1] = temp;
                                 }
                             }
                         }
                     }
                 }
                 else if (moves[v] == 'r') {
-                    for (int o = 0; o < 4; o++) {
-                        for (int q = 0; q < 4; q++) {
-                            if (initialSixT[o][q] == 0) {
-                                if (q == 4) {
+                    for (int o = 0; o < 3; o++) {
+                        for (int q = 0; q < 3; q++) {
+                            if (initialEight[o][q] == 0) {
+                                if (q == 3) {
                                     cout << "Cant move right, empty tile is rightmost" << endl;
                                 }
                                 else {
-                                    temp = initialSixT[o][q];
-                                    initialSixT[o][q] = initialSixT[o][q + 1];
-                                    initialSixT[o][q + 1] = temp;
+                                    temp = initialEight[o][q];
+                                    initialEight[o][q] = initialEight[o][q + 1];
+                                    initialEight[o][q + 1] = temp;
                                 }
                             }
                         }
                     }
                 }
                 else if (moves[v] == 'd') {
-                    for (int o = 0; o < 4; o++) {
-                        for (int q = 0; q < 4; q++) {
-                            if (initialSixT[o][q] == 0) {
-                                if (o == 4) {
+                    for (int o = 0; o < 3; o++) {
+                        for (int q = 0; q < 3; q++) {
+                            if (initialEight[o][q] == 0) {
+                                if (o == 3) {
                                     cout << "Cant move down, empty tile is at the bottom" << endl;
                                 }
                                 else {
-                                    temp = initialSixT[o][q];
-                                    initialSixT[o][q] = initialSixT[o + 1][q];
-                                    initialSixT[o + 1][q] = temp;
+                                    temp = initialEight[o][q];
+                                    initialEight[o][q] = initialEight[o + 1][q];
+                                    initialEight[o + 1][q] = temp;
                                 }
                             }
                         }
                     }
                 }
                 else if (moves[v] == 'u') {
-                    for (int o = 0; o < 4; o++) {
-                        for (int q = 0; q < 4; q++) {
-                            if (initialSixT[o][q] == 0) {
+                    for (int o = 0; o < 3; o++) {
+                        for (int q = 0; q < 3; q++) {
+                            if (initialEight[o][q] == 0) {
                                 if (o == 0) {
                                     cout << "Cant move up, empty tile is at the top" << endl;
                                 }
                                 else {
-                                    temp = initialSixT[o][q];
-                                    initialSixT[o][q] = initialSixT[o - 1][q];
-                                    initialSixT[o - 1][q] = temp;
+                                    temp = initialEight[o][q];
+                                    initialEight[o][q] = initialEight[o - 1][q];
+                                    initialEight[o - 1][q] = temp;
                                 }
                             }
                         }
@@ -292,33 +263,33 @@ int main()
             delete[] moves;
             string useless;
             cout << "Printing out modified array... (Letters are translated to numbers)" << endl;
-            for (int o = 0; o < 4; o++) {
-                for (int q = 0; q < 4; q++) {
-                    cout << initialSixT[o][q];
-                    if (q + 1 < 4) {
+            for (int o = 0; o < 3; o++) {
+                for (int q = 0; q < 3; q++) {
+                    cout << initialEight[o][q];
+                    if (q + 1 < 3) {
                         cout << ", ";
                     }
                 }
                 cout << endl;
             }
         }
-         else if (mode == 3) {
-         break;
+        else if (mode == 3) {
+            break;
         }
-         else
+        else
         {
-        cout << "Enter a right mode" << endl;
+            cout << "Enter a right mode" << endl;
         }
-        cout << "Enter your choice:" << endl << "1. Run BFS" << endl << "2. Run DFS" << endl << "3. Run IDS" << endl << "4. Run A*" << endl << "5. Run IDA*" << endl << "6. Run All" << endl << "7. Exit" << endl;
+        cout << "Enter your choice:" << endl << "1. Run BFS" << endl << "2. Run DFS" << endl << "3. Run IDS" << endl << "4. Run A*" << endl << "5. Run IDA*" << endl << "6. Run all" << endl << "7. Exit" << endl;
         cin >> choice;
         if (choice == 1)
         {
             mp.clear();
             clock_t start = clock();
-            BFS(initialSixT, x, y, goalSixT);
+            BFS(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
             cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -331,10 +302,10 @@ int main()
             mp.clear();
             dfs_sltn = false;
             clock_t start = clock();
-            DFS(initialSixT, x, y, 0, NULL, goalSixT, 40);
+            DFS(initialEight, x, y, 0, NULL, goalEight, 40);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice+1] << endl << "Solution Nodes-->" << solutionNodes[choice+1] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -347,10 +318,10 @@ int main()
             mp.clear();
             dfs_sltn = false;
             clock_t start = clock();
-            IDS(initialSixT, x, y, 0, NULL, goalSixT, 40);
+            IDS(initialEight, x, y, 0, NULL, goalEight, 40);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice+1] << endl << "Solution Nodes-->" << solutionNodes[choice+1] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -361,10 +332,10 @@ int main()
         {
             mp.clear();
             clock_t start = clock();
-            AstarSearch(initialSixT, x, y, goalSixT);
+            AstarSearch(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice+2] << endl << "Solution Nodes-->" << solutionNodes[choice+2] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
@@ -374,67 +345,89 @@ int main()
         else if (choice == 5) {
             mp.clear();
             clock_t start = clock();
-            IDAStar(initialSixT, x, y, goalSixT);
+            IDAStar(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "Total Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice+1] << endl << "Solution Nodes-->" << solutionNodes[choice+1] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
         }
         else if (choice == 6)
         {
             cout << "Running BFS" << endl << endl;
             mp.clear();
-            BFS(initialSixT, x, y, goalSixT);
+            BFS(initialEight, x, y, goalEight);
             cout << "\nTotal Nodes-->" << searchNodes[1] << endl << "Solution Nodes-->" << solutionNodes[1] << endl << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
 
             cout << "Running DFS" << endl << endl;
             mp.clear();
             dfs_sltn = false;
-            DFS(initialSixT, x, y, 0, NULL, goalSixT, 9);
+            DFS(initialEight, x, y, 0, NULL, goalEight, 40);
             cout << "\nTotal Nodes-->" << searchNodes[3] << endl << "Solution Nodes-->" << solutionNodes[3] << endl << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
 
             cout << "Running IDS" << endl << endl;
             mp.clear();
             dfs_sltn = false;
-            IDS(initialSixT, x, y, 0, NULL, goalSixT, 9);
+            IDS(initialEight, x, y, 0, NULL, goalEight, 40);
             cout << "\nTotal Nodes-->" << searchNodes[4] << endl << "Solution Nodes-->" << solutionNodes[4] << endl << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
 
 
             cout << "Running A*" << endl << endl;
             mp.clear();
-            AstarSearch(initialSixT, x, y, goalSixT);
+            AstarSearch(initialEight, x, y, goalEight);
             cout << "\nTotal Nodes-->" << searchNodes[6] << endl << "Solution Nodes-->" << solutionNodes[6] << endl << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
+
             cout << "Running IDA*" << endl << endl;
             mp.clear();
             clock_t start = clock();
-            IDAStar(initialSixT, x, y, goalSixT);
+            IDAStar(initialEight, x, y, goalEight);
             double  runtime = (double)(clock() - start) / CLOCKS_PER_SEC;
-            cout << "Total Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
-            cout << "Elapsed Times " << runtime << " seconds" << endl;
+            cout << "\nTotal Nodes-->" << searchNodes[choice] << endl << "Solution Nodes-->" << solutionNodes[choice] << endl << endl;
+            cout << "Elapsed Times " << runtime << " seconds\n\n\n" << endl;
             iterate = 0;
             for (int i = 0; i < 999999; i++) {
                 track1[i] = NULL;
                 track2[i] = NULL;
             }
+            for (int i = 0; i < 8; i++) {
+                solutionNodes[i] = 0;
+                searchNodes[i] = 0;
+            }
+
 
         }
         if (choice == 7) {
